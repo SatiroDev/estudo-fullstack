@@ -3,27 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/style.css') }}">
+    <title>Gerenciamento de Usuários</title>
 </head>
-<body>
-    <h1>Cadastro de Usuários</h1>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div>{{ message }}</div>
-            {% endfor %}  <!--Finalizando o for-->
-        {% endif %}  <!--Finalizando o if-->
-    {% endwith %}  <!--Finalizando o with , pq? -> html não entende identação-->
-    <form action="/adicionar_cliente" method="POST">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br><br>
+    <body class="telaDeCadatro">
+        <header>
+            <h1 class="tituloSistema">Sistema de Gerenciamento de Usuários</h1>
+            <h3 class="subTituloSistama">Cadastre e vizualize usuários do sistema</h3>
+        </header>
+        
+        <main>
+            <div class="headerMainTelas">
+                <a href="index.html" class="botaoHeaderCadastro">
+                    <img src="../static/img/pinUser.svg" alt="pinUser" class="imgUserMais">
+                    <p>Cadastro</p>
+                </a>
+                <a href="/clientes" class="botaoVerUsuarios">
+                    <img src="../static/img/pinUsers.svg" alt="pinUsers" class="imgUsers">
+                    <p>Usuários</p>
+                </a>
+            </div>
+            <form action="/adicionar_cliente" method="POST">
+                <p class="cadastroUsuarios">Cadastro de Usuários</p>
+                <p class="descricao">Preencha os dados abaixo para cadastrar um novo usuário</p>
+                <label for="nome">Nome de Usuário*</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite o nome" required>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required><br><br>
+                <label for="email">Email *</label>
+                <input type="email" name="email" id="email" placeholder="exemplo@email.com" required>
 
-        <button type="submit">Adicionar Cliente</button>
-    </form>
-    <br>
-    <a href="/clientes"><button type="button">Ver Clientes Cadastrados</button></a>
-</body>
+                <button type="submit">Cadastrar Usuário</button>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div>{{ message }}</div>
+                        {% endfor %}  <!--Finalizando o for-->
+                    {% endif %}  <!--Finalizando o if-->
+                {% endwith %}  <!--Finalizando o with , pq? -> html não entende identação-->
+            </form>
+        </main>
+    </body>
 </html>

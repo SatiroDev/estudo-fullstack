@@ -3,16 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Gerenciamento de Usuários</title>
 </head>
-<body>
-    <h1>Clientes Cadastrados</h1>
-    <ul>
-        {% for cliente in clientes %}
-            <li>{{ cliente[1] }} - {{ cliente[2] }}</li> <!-- índice 1 = nome, índice 2 = email -->
-        {% endfor %}
-    </ul>
+    <body class="telaDeUsuarios">
+        <header>
+            <h1 class="tituloSistema">Sistema de Gerenciamento de Usuários</h1>
+            <h3 class="subTituloSistama">Cadastre e vizualize usuários do sistema</h3>
+        </header>
+        
+        <main>
+            <div class="headerMainTelas">
+                <a href="{{ url_for('index') }}" class="botaoHeaderCadastro">
+                    <img src="../static/img/pinUser.svg" alt="pinUser" class="imgUserMais">
+                    <p>Cadastro</p>
+                </a>
+                <a href="/clientes" class="botaoVerUsuarios">
+                    <img src="../static/img/pinUsers.svg" alt="pinUsers" class="imgUsers">
+                    <p>Usuários</p>
+                </a>
+            </div>
+            <form action="/adicionar_cliente" method="POST">
+                <p class="cadastroUsuarios">Usuários Cadastrados</p>
+                <p class="descricao">Lista de todos os usuários registrados no sistema</p>
+                <ul>
+                    {% for cliente in clientes %}
+                        <li>{{ cliente[1] }} - {{ cliente[2] }}</li> <!-- índice 1 = nome, índice 2 = email -->
+                    {% endfor %}
+                </ul>
 
-    <a href="/">Voltar</a>
-</body>
+            </form>
+        </main>
+    </body>
 </html>
