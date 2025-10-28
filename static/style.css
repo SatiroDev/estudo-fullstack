@@ -37,10 +37,10 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
-    min-width: 250px;
+    width: 400px;     
+    max-width: 35%;     
+    min-width: 200px;   
     height: 30px;
-    max-height: 40px;
     background-color: #a7c1d1;
     border-radius: 15px;
 }
