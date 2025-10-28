@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+</head>
+<body>
+    <h1>Cadastro de Usuários</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div>{{ message }}</div>
+            {% endfor %}  <!--Finalizando o for-->
+        {% endif %}  <!--Finalizando o if-->
+    {% endwith %}  <!--Finalizando o with , pq? -> html não entende identação-->
+    <form action="/adicionar_cliente" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required><br><br>
+
+        <button type="submit">Adicionar Cliente</button>
+    </form>
+    <br>
+    <a href="/clientes"><button type="button">Ver Clientes Cadastrados</button></a>
+</body>
+</html>
